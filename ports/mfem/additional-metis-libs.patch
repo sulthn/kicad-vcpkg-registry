@@ -1,0 +1,47 @@
+From f60587c903a06f7e3046dad890e348b9c818e9b2 Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sat, 16 Sep 2023 15:30:28 -0400
+Subject: [PATCH 2/2] Fix find metis to tolerate the extra static libs for
+ testing
+
+---
+ config/cmake/modules/FindMETIS.cmake | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/config/cmake/modules/FindMETIS.cmake b/config/cmake/modules/FindMETIS.cmake
+index 8de8d6a22..18f6a0187 100644
+--- a/config/cmake/modules/FindMETIS.cmake
++++ b/config/cmake/modules/FindMETIS.cmake
+@@ -17,8 +17,9 @@
+ include(MfemCmakeUtilities)
+ mfem_find_package(METIS METIS METIS_DIR "include;Lib" "metis.h"
+   "lib" "metis;metis4;metis5"
+-  "Paths to headers required by METIS." "Libraries required by METIS."
+-  CHECK_BUILD METIS_VERSION_5 FALSE
++  "Paths to headers required by METIS." "Libraries required by METIS." )
++
++set( METIS_5_TEST_SRC
+   "
+ #include <metis.h>
+ #include <cstddef> // So NULL is defined
+@@ -56,6 +57,17 @@ int main()
+ }
+ ")
+ 
++find_library(GKlib_LIBRARY GKlib REQUIRED)
++#find_library(LAPACK_LIBRARY lapack REQUIRED)
++#find_library(OPENBLAS_LIBRARY openblas REQUIRED)
++list(APPEND METIS_LIBRARIES ${GKlib_LIBRARY})
++
++include(CheckCXXSourceCompiles)
++set(CMAKE_REQUIRED_INCLUDES ${METIS_INCLUDE_DIRS})
++set(CMAKE_REQUIRED_LIBRARIES ${METIS_LIBRARIES})
++set(CMAKE_REQUIRED_QUIET ${METIS_FIND_QUIETLY})
++check_cxx_source_compiles("${METIS_5_TEST_SRC}" METIS_VERSION_5)
++
+ # Expose METIS_VERSION_5 (it is created as INTERNAL) and copy its value to
+ # MFEM_USE_METIS_5:
+ set(MFEM_USE_METIS_5 ${METIS_VERSION_5})
+-- 
+2.42.0.windows.2
+

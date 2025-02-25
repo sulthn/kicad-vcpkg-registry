@@ -1,0 +1,46 @@
+From 2040a1618b3ba957feb9577740347f7fcf501a35 Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sun, 5 Jan 2025 09:44:39 -0500
+Subject: [PATCH 2/2] Patch aux-digital.bat to accept arch arg
+
+---
+ visualc/xspice/aux-digital.bat | 2 +-
+ visualc/xspice/digital.vcxproj | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/visualc/xspice/aux-digital.bat b/visualc/xspice/aux-digital.bat
+index 26920bb3b..ec56e0b19 100644
+--- a/visualc/xspice/aux-digital.bat
++++ b/visualc/xspice/aux-digital.bat
+@@ -11,7 +11,7 @@ CL.EXE /O2 /LD /EHsc /Feivlng.DLL /I%src% /I%inc% %src%\icarus_shim.c ^
+ 
+ rem Make a dummy libvvp.obj, needed for shim.vpi (to be renamed ivlng.vpi).
+ 
+-lib.exe /def:%src%\libvvp.def /machine:X64
++lib.exe /def:%src%\libvvp.def /machine:%2
+ CL.EXE /O2 /LD /EHsc /Feshim.vpi /I. /I%inc% %src%\vpi.c libvvp.lib ivlng.lib /link /DLL /EXPORT:vlog_startup_routines
+ dir
+ popd
+diff --git a/visualc/xspice/digital.vcxproj b/visualc/xspice/digital.vcxproj
+index a8f76eb51..110e0fffb 100644
+--- a/visualc/xspice/digital.vcxproj
++++ b/visualc/xspice/digital.vcxproj
+@@ -122,7 +122,7 @@
+   <ItemDefinitionGroup>
+     <PreBuildEvent>
+       <Message>Generate Iverilog support, cfunc.c and ifspec.c files</Message>
+-      <Command>call .\aux-digital.bat $(ProjectName)</Command>
++      <Command>call .\aux-digital.bat $(ProjectName) $(PlatformTarget)</Command>
+     </PreBuildEvent>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+@@ -484,4 +484,4 @@
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+   <ImportGroup Label="ExtensionTargets">
+   </ImportGroup>
+-</Project>
++</Project>
+\ No newline at end of file
+-- 
+2.42.0.windows.2
+

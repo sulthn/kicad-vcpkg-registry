@@ -1,0 +1,296 @@
+From eb29985bfbe044054be3edc717040a8790edb350 Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Fri, 3 Feb 2023 22:48:52 -0500
+Subject: [PATCH 2/6] fix warning
+
+---
+ visualc/sharedspice.vcxproj   | 12 ++++++------
+ visualc/vngspice-fftw.vcxproj | 24 ++++++++++++------------
+ visualc/vngspice.vcxproj      | 24 ++++++++++++------------
+ 3 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/visualc/sharedspice.vcxproj b/visualc/sharedspice.vcxproj
+index fab606e15..38b29ba9c 100644
+--- a/visualc/sharedspice.vcxproj
++++ b/visualc/sharedspice.vcxproj
+@@ -113,7 +113,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;..\src\spicelib\parser;src\include;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;SHARED_MODULE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;SHARED_MODULE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <PreprocessToFile>false</PreprocessToFile>
+       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+       <MinimalRebuild>false</MinimalRebuild>
+@@ -159,7 +159,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;..\src\spicelib\parser;src\include;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;SHARED_MODULE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;SHARED_MODULE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling />
+       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+@@ -197,7 +197,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\osdi;..\src\frontend;..\src\spicelib\devices;tmp-bison;..\src\spicelib\parser;src\include;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;SHARED_MODULE;CONFIG64;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;SHARED_MODULE;CONFIG64;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <PreprocessToFile>false</PreprocessToFile>
+       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+       <MinimalRebuild>false</MinimalRebuild>
+@@ -246,7 +246,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\osdi;..\src\frontend;..\src\spicelib\devices;tmp-bison;..\src\spicelib\parser;src\include;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;SHARED_MODULE;CONFIG64;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;SHARED_MODULE;CONFIG64;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -288,7 +288,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;..\src\spicelib\parser;src\include;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;SHARED_MODULE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;SHARED_MODULE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling />
+       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+@@ -335,7 +335,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\osdi;..\src\frontend;..\src\spicelib\devices;tmp-bison;..\src\spicelib\parser;src\include;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;SHARED_MODULE;CONFIG64;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;SHARED_MODULE;CONFIG64;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+diff --git a/visualc/vngspice-fftw.vcxproj b/visualc/vngspice-fftw.vcxproj
+index 60a629363..5b6d29f6b 100644
+--- a/visualc/vngspice-fftw.vcxproj
++++ b/visualc/vngspice-fftw.vcxproj
+@@ -207,7 +207,7 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;NGDEBUG;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;NGDEBUG;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -255,7 +255,7 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -306,7 +306,7 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;NGDEBUG;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;NGDEBUG;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -359,7 +359,7 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -411,7 +411,7 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;NGDEBUG;CONSOLE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;NGDEBUG;CONSOLE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -460,7 +460,7 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;CONSOLE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;CONSOLE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -512,7 +512,7 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;NGDEBUG;CONSOLE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;NGDEBUG;CONSOLE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -565,7 +565,7 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;CONSOLE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;CONSOLE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -618,7 +618,7 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -674,7 +674,7 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;USE_OMP;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;USE_OMP;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -731,7 +731,7 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;CONSOLE;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;CONSOLE;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -786,7 +786,7 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;..\..\fftw-3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;CONSOLE;CONFIG64;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;CONSOLE;CONFIG64;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+diff --git a/visualc/vngspice.vcxproj b/visualc/vngspice.vcxproj
+index e5e89a364..b53795a93 100644
+--- a/visualc/vngspice.vcxproj
++++ b/visualc/vngspice.vcxproj
+@@ -212,7 +212,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -261,7 +261,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -315,7 +315,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\osdi;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -369,7 +369,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -422,7 +422,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -471,7 +471,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -523,7 +523,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;CONSOLE;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);NGDEBUG;CONSOLE;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -577,7 +577,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -631,7 +631,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -686,7 +686,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);USE_OMP;CONFIG64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -744,7 +744,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+@@ -799,7 +799,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <WholeProgramOptimization>true</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\src\maths\poly;..\src\frontend;..\src\spicelib\devices;tmp-bison;src\include;..\src\spicelib\parser;..\src\include;..\src\include\cppduals;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;CONFIG64;USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;__STDC_LIMIT_MACROS;SIMULATOR;XSPICE;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);CONSOLE;CONFIG64;USE_OMP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>false</MinimalRebuild>
+       <ExceptionHandling>
+       </ExceptionHandling>
+-- 
+2.42.0.windows.2
+

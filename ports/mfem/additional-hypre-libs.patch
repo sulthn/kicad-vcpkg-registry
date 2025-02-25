@@ -1,0 +1,30 @@
+From 1def9811b0b391f914bbe4ef4dd5f83edba3657c Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sat, 16 Sep 2023 14:56:54 -0400
+Subject: [PATCH 1/2] Add the additional static lib find for hypre to link
+
+---
+ config/cmake/modules/FindHYPRE.cmake | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/config/cmake/modules/FindHYPRE.cmake b/config/cmake/modules/FindHYPRE.cmake
+index b21599330..9da07551a 100644
+--- a/config/cmake/modules/FindHYPRE.cmake
++++ b/config/cmake/modules/FindHYPRE.cmake
+@@ -55,6 +55,13 @@ if (HYPRE_FOUND AND (NOT HYPRE_VERSION))
+   else()
+     message(FATAL_ERROR "Unable to determine HYPRE version.")
+   endif()
++  
++  # Required because the hypre static lib is built against it
++  find_library(GKlib_LIBRARY GKlib REQUIRED)
++  find_library(LAPACK_LIBRARY lapack REQUIRED)
++  find_library(OPENBLAS_LIBRARY openblas REQUIRED)
++  list(APPEND HYPRE_LIBRARIES ${GKlib_LIBRARY} ${LAPACK_LIBRARY} ${OPENBLAS_LIBRARY})
++  message(STATUS "Updated HYPRE_LIBRARIES: ${HYPRE_LIBRARIES}")
+ endif()
+ 
+ if (HYPRE_FOUND AND HYPRE_USING_HIP)
+-- 
+2.42.0.windows.2
+

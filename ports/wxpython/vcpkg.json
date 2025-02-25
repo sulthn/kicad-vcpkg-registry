@@ -1,0 +1,23 @@
+{
+  "name": "wxpython",
+  "version-string": "4.2.2",
+  "port-version": 2,
+  "description": "Python library that allows creating wxWidget interfaces from python",
+  "homepage": "https://github.com/wxWidgets/phoenix",
+  "supports": "windows & !static & !uwp",
+  "dependencies": [
+    {
+      "name": "wxwidgets",
+      "features": [ "media", "webview" ]
+    },
+    "python3",
+    {
+      "name": "vcpkg-get-python-packages",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    }
+  ]
+}

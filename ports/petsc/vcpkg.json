@@ -1,0 +1,29 @@
+{
+  "name": "petsc",
+  "version": "3.19.5",
+  "port-version": 1,
+  "description": "The Portable, Extensible Toolkit for Scientific Computation, is a suite of data structures and routines developed by Argonne National Laboratory for the scalable solution of scientific applications modeled by partial differential equations.",
+  "homepage": "https://petsc.org/",
+  "dependencies": [
+    "lapack-reference",
+    "msmpi"
+  ],
+  "features": {
+    "hypre": {
+      "description": "LLNL preconditioner library",
+      "dependencies": [
+        {
+          "name": "hypre"
+        }
+      ]
+    },    
+    "metis": {
+      "description": "Serial Graph Partitioning and Fill-reducing Matrix Ordering",
+      "dependencies": [
+        {
+          "name": "metis"
+        }
+      ]
+    }
+  }
+}

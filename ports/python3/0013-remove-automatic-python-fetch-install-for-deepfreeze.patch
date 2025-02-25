@@ -1,0 +1,24 @@
+From 1c44b6625cbbd99ebfed71650bcf3f308c7a6ec3 Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sat, 11 Mar 2023 16:03:31 -0500
+Subject: [PATCH] Remove the automatic python fetch/install for deepfreeze
+
+---
+ PCbuild/_freeze_module.vcxproj | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/PCbuild/_freeze_module.vcxproj b/PCbuild/_freeze_module.vcxproj
+index 442e3437da..e1aba7276e 100644
+--- a/PCbuild/_freeze_module.vcxproj
++++ b/PCbuild/_freeze_module.vcxproj
+@@ -391,7 +391,6 @@
+   </Target>
+   <Target Name="_RebuildDeepFrozen"
+           AfterTargets="_RebuildFrozen"
+-          DependsOnTargets="FindPythonForBuild"
+           Condition="$(Configuration) != 'PGUpdate'">
+     <!-- BEGIN deepfreeze rule -->
+ 	<Exec Command='$(PythonForBuild) "$(PySourcePath)Tools\scripts\deepfreeze.py" ^
+-- 
+2.39.1.windows.1
+

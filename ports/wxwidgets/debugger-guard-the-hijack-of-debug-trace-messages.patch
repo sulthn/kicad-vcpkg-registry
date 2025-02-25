@@ -1,0 +1,44 @@
+From bb6fda9e160c41266ff32d437f14c0d574a1f00f Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sat, 11 Jan 2025 11:11:38 -0500
+Subject: [PATCH] Debugger guard the hijack of debug/trace messages
+
+---
+ src/common/msgout.cpp | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/src/common/msgout.cpp b/src/common/msgout.cpp
+index 1ea9e2c21f..a2fa5771c9 100644
+--- a/src/common/msgout.cpp
++++ b/src/common/msgout.cpp
+@@ -183,14 +183,19 @@ void wxMessageOutputStderr::Output(const wxString& str)
+ void wxMessageOutputDebug::Output(const wxString& str)
+ {
+ #if defined(__WINDOWS__)
+-    wxString out(AppendLineFeedIfNeeded(str));
+-    out.Replace(wxT("\t"), wxT("        "));
+-    out.Replace(wxT("\n"), wxT("\r\n"));
+-    ::OutputDebugString(out.t_str());
+-#else
+-    // TODO: use native debug output function for the other ports too
+-    wxMessageOutputStderr::Output(str);
+-#endif // platform
++    if( ::IsDebuggerPresent() )
++    {
++        wxString out(AppendLineFeedIfNeeded(str));
++        out.Replace(wxT("\t"), wxT("        "));
++        out.Replace(wxT("\n"), wxT("\r\n"));
++        ::OutputDebugString(out.t_str());
++    }
++    else
++#endif
++    {
++        // TODO: use native debug output function for the other ports too
++        wxMessageOutputStderr::Output(str);
++    }
+ }
+ 
+ // ----------------------------------------------------------------------------
+-- 
+2.42.0.windows.2
+

@@ -1,0 +1,24 @@
+From bc1b9953a0b81b7e0bb4549414c7af4fe127194e Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sat, 4 Mar 2023 17:20:30 -0500
+Subject: [PATCH] ignore stackwalker GetAssertStackTrace
+
+---
+ etg/apptrait.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/etg/apptrait.py b/etg/apptrait.py
+index e1beddfe..15efc634 100644
+--- a/etg/apptrait.py
++++ b/etg/apptrait.py
+@@ -40,6 +40,7 @@ def run():
+     for name in [ 'CreateFontMapper',
+                   'CreateMessageOutput',
+                   'CreateRenderer',
++                  'GetAssertStackTrace'
+                   ]:
+         c.find(name).ignore()
+ 
+-- 
+2.39.1.windows.1
+

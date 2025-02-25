@@ -1,0 +1,38 @@
+From 386ac70e78f430e8a3af44ca3728f8bd7acf51aa Mon Sep 17 00:00:00 2001
+From: Vadim Zeitlin <vadim@wxwidgets.org>
+Date: Fri, 1 Nov 2024 19:09:26 +0100
+Subject: [PATCH 2/2] Return empty size from iconized wxFrame GetClientSize()
+ in wxMSW
+
+Returning negative size, due to subtracting tool/status bar size from
+it, was unexpected, so return empty, i.e. (0,0), size when the window is
+iconized instead, as documented.
+---
+ src/msw/frame.cpp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/msw/frame.cpp b/src/msw/frame.cpp
+index b7b75165a7..996ff2be27 100644
+--- a/src/msw/frame.cpp
++++ b/src/msw/frame.cpp
+@@ -249,6 +249,17 @@ void wxFrame::DoGetClientSize(int *x, int *y) const
+         }
+     }
+ #endif // wxUSE_STATUSBAR
++
++    // Ensure that we always return a valid size, it can never be negative.
++    //
++    // Note that this takes care of the case when the frame is minimized, as
++    // Windows client size in this case is (0,0), but while we could test for
++    // this separately, it seems more robust to just always do this here to
++    // establish our post-condition.
++    if ( x && *x < 0 )
++        *x = 0;
++    if ( y && *y < 0 )
++        *y = 0;
+ }
+ 
+ // ----------------------------------------------------------------------------
+-- 
+2.42.0.windows.2
+

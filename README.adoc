@@ -1,0 +1,49 @@
+== Adding/ Updating Port
+
+1. Commit all your port changes, preferably to keep things tidy it's one commit.
+2. Bump the version in vcpkg.json. 
+a. If it's a package version change, bump the "version-string"
+b. If it's a port/build/packaging change, bump the "port-version". If it's the first time a port is present for a "package version", exclude the use of port-version in the vcpkg.json
+
+3. If a completely new port go to versions/base.json
+Add under "default" a entry such as
+
+```
+{
+  "default": {
+    "<portname>": { "baseline": "1.0.0", "port-version": 0 }
+  }
+}
+```
+
+where the baseline key is the first ever "version-string" and "port-version" which will probably be 0.
+
+4. Go to versions/<first letter of portname>-/<portname>.json
+Create the folder and file path if required
+
+The initial file should appear as such 
+
+```
+{
+  "versions": [
+    {
+      "version": "<version-string>",
+      "git-tree": "<git hash>",
+      "port-version": <port-version>
+    }
+  ]
+}
+```
+
+
+where <git hash>  is the git tree identifier for the port directory post commit after running:
+
+git rev-parse HEAD:ports/<portname>
+
+
+Now *amend* this file to have additional array entries as needed for the new version:port-version combo
+
+
+== Further Reading
+Some extra details on how vcpkg registries work can be found here https://github.com/microsoft/vcpkg/blob/master/docs/specifications/registries-2.md
+but be warned it talks about how _everything_ works and not just the subset of functionality that KiCad uses.

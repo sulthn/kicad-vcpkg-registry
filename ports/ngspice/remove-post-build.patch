@@ -1,0 +1,230 @@
+From 5276d7d2b1490a5538b2fc98c9a2102d591f4db8 Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Thu, 12 Aug 2021 22:09:34 -0400
+Subject: [PATCH 4/6] Remove post build events that copy files out of the tree
+
+---
+ visualc/vngspice-fftw.vcxproj | 24 ------------------------
+ visualc/vngspice.vcxproj      | 17 +++++------------
+ 2 files changed, 5 insertions(+), 36 deletions(-)
+
+diff --git a/visualc/vngspice-fftw.vcxproj b/visualc/vngspice-fftw.vcxproj
+index 5b6d29f6b..344add4d7 100644
+--- a/visualc/vngspice-fftw.vcxproj
++++ b/visualc/vngspice-fftw.vcxproj
+@@ -238,8 +238,6 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll32\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspiced.bat $(OutDir) fftw
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -289,8 +287,6 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll32\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -339,8 +335,6 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll64\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspiced.bat $(OutDir) fftw 64
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -397,8 +391,6 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll64\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw 64
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -443,8 +435,6 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll32\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspiced.bat $(OutDir) fftw
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -495,8 +485,6 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll32\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -545,8 +533,6 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll64\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspiced.bat $(OutDir) fftw 64
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -601,8 +587,6 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll64\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw 64
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -654,8 +638,6 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll32\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -714,8 +696,6 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll64\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw 64
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -766,8 +746,6 @@ lib /machine:x86 /def:..\..\fftw-3.3-dll32\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll32\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+@@ -824,8 +802,6 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      copy /y "..\..\fftw-3.3-dll64\libfftw3-3.dll" "$(OutDir)"
+-      make-install-vngspice.bat $(OutDir) fftw 64
+       </Command>
+     </PostBuildEvent>
+   </ItemDefinitionGroup>
+diff --git a/visualc/vngspice.vcxproj b/visualc/vngspice.vcxproj
+index b53795a93..ce07d44b2 100644
+--- a/visualc/vngspice.vcxproj
++++ b/visualc/vngspice.vcxproj
+@@ -244,7 +244,7 @@
+       <AdditionalLibraryDirectories>KLU/Debug/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+     </Link>
+     <PostBuildEvent>
+-      <Command>make-install-vngspiced.bat $(OutDir)</Command>
++      <Command></Command>
+     </PostBuildEvent>
+     <Manifest>
+       <AdditionalManifestFiles>$(ProjectDir)ngspice-x86.exe.manifest</AdditionalManifestFiles>
+@@ -297,7 +297,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspice.bat $(OutDir)
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+@@ -348,7 +347,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspiced.bat $(OutDir) 64
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+@@ -407,7 +405,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspice.bat $(OutDir) 64
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+@@ -454,7 +451,7 @@
+       <AdditionalLibraryDirectories>KLU/Debug/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+     </Link>
+     <PostBuildEvent>
+-      <Command>make-install-vngspiced.bat $(OutDir)</Command>
++      <Command></Command>
+     </PostBuildEvent>
+     <Manifest>
+       <AdditionalManifestFiles>$(ProjectDir)ngspice-x86.exe.manifest</AdditionalManifestFiles>
+@@ -506,7 +503,7 @@
+       <AdditionalLibraryDirectories>KLU/Release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+     </Link>
+     <PostBuildEvent>
+-      <Command>make-install-vngspice.bat $(OutDir)</Command>
++      <Command></Command>
+     </PostBuildEvent>
+     <Manifest>
+       <AdditionalManifestFiles>$(ProjectDir)ngspice-x86.exe.manifest</AdditionalManifestFiles>
+@@ -556,7 +553,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspiced.bat $(OutDir) 64
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+@@ -613,7 +609,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspice.bat $(OutDir) 64
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+@@ -666,7 +661,7 @@
+       <AdditionalLibraryDirectories>KLU/Release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+     </Link>
+     <PostBuildEvent>
+-      <Command>make-install-vngspice.bat $(OutDir)</Command>
++      <Command></Command>
+     </PostBuildEvent>
+     <Manifest>
+       <AdditionalManifestFiles>$(ProjectDir)ngspice-x86.exe.manifest</AdditionalManifestFiles>
+@@ -726,7 +721,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspice.bat $(OutDir) 64
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+@@ -779,7 +773,7 @@
+       <AdditionalLibraryDirectories>KLU/Release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+     </Link>
+     <PostBuildEvent>
+-      <Command>make-install-vngspice.bat $(OutDir)</Command>
++      <Command></Command>
+     </PostBuildEvent>
+     <Manifest>
+       <AdditionalManifestFiles>$(ProjectDir)ngspice-x86.exe.manifest</AdditionalManifestFiles>
+@@ -837,7 +831,6 @@
+     </Link>
+     <PostBuildEvent>
+       <Command>
+-      make-install-vngspice.bat $(OutDir) 64
+       </Command>
+     </PostBuildEvent>
+     <Manifest>
+-- 
+2.42.0.windows.2
+

@@ -1,0 +1,56 @@
+From 24930d1cdc99cbaa9737eb58d21ec12a4e69fbb8 Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Sun, 14 Jan 2024 22:56:33 -0500
+Subject: [PATCH] Add locale install
+
+---
+ build/cmake/locale.cmake | 23 +++++++++++++++++++++++
+ build/cmake/main.cmake   |  1 +
+ 2 files changed, 24 insertions(+)
+ create mode 100644 build/cmake/locale.cmake
+
+diff --git a/build/cmake/locale.cmake b/build/cmake/locale.cmake
+new file mode 100644
+index 0000000000..b125e3002b
+--- /dev/null
++++ b/build/cmake/locale.cmake
+@@ -0,0 +1,23 @@
++find_package(Gettext REQUIRED)
++
++file(GLOB _po_files locale/*.po)
++foreach(_po_file ${_po_files})
++    get_filename_component( _po_name ${_po_file} NAME_WLE )
++    list( APPEND LANGS ${_po_name} )
++endforeach()
++
++set(_domain "wxstd-${wxMAJOR_VERSION}.${wxMINOR_VERSION}")
++
++foreach(lang ${LANGS})
++    gettext_process_po_files(${lang} ALL PO_FILES locale/${lang}.po)
++    
++    set( _outpath "${CMAKE_INSTALL_PREFIX}/share/locale/${lang}" )
++    install(DIRECTORY DESTINATION ${_outpath})
++    
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${lang}.gmo DESTINATION ${_outpath} RENAME ${_domain}.mo)
++    
++    list( APPEND OUT_LANG_FILES "${_out_file}" )
++endforeach()
++
++add_custom_target( locale ALL
++                   DEPENDS ${OUT_LANG_FILES} )
+\ No newline at end of file
+diff --git a/build/cmake/main.cmake b/build/cmake/main.cmake
+index ec9fe9d437..999b53cf4f 100644
+--- a/build/cmake/main.cmake
++++ b/build/cmake/main.cmake
+@@ -16,6 +16,7 @@ include(build/cmake/toolkit.cmake)          # Platform/toolkit settings
+ include(build/cmake/options.cmake)          # User options
+ include(build/cmake/init.cmake)             # Init various global build vars
+ include(build/cmake/pch.cmake)              # Precompiled header support
++include(build/cmake/locale.cmake)              # Precompiled header support
+ 
+ add_subdirectory(build/cmake/lib libs)
+ add_subdirectory(build/cmake/utils utils)
+-- 
+2.42.0.windows.2
+

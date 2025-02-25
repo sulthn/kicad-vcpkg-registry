@@ -1,0 +1,79 @@
+From e976a50980d25f4ca03e688bd22796a7da387db3 Mon Sep 17 00:00:00 2001
+From: Vadim Zeitlin <vadim@wxwidgets.org>
+Date: Fri, 1 Nov 2024 19:02:37 +0100
+Subject: [PATCH 1/2] Don't break AUI layout if Update() is called while
+ iconized
+
+Because we don't have the correct client size when the window is
+minimized (at least in wxMSW), postpone the actual update until the
+window is restored, as we don't really need to do it until then anyhow.
+
+Closes #24930.
+---
+ include/wx/aui/framemanager.h |  5 +++++
+ src/aui/framemanager.cpp      | 26 ++++++++++++++++++++++++--
+ 2 files changed, 29 insertions(+), 2 deletions(-)
+
+diff --git a/include/wx/aui/framemanager.h b/include/wx/aui/framemanager.h
+index 333f626ff5..8092a578f0 100644
+--- a/include/wx/aui/framemanager.h
++++ b/include/wx/aui/framemanager.h
+@@ -615,6 +615,11 @@ protected:
+ 
+     void* m_reserved;
+ 
++private:
++    // This flag is set to true if Update() is called while the window is
++    // minimized, in which case we postpone updating it until it is restored.
++    bool m_updateOnRestore = false;
++
+ #ifndef SWIG
+     wxDECLARE_EVENT_TABLE();
+     wxDECLARE_CLASS(wxAuiManager);
+diff --git a/src/aui/framemanager.cpp b/src/aui/framemanager.cpp
+index 7cc11b1125..946033aebc 100644
+--- a/src/aui/framemanager.cpp
++++ b/src/aui/framemanager.cpp
+@@ -2495,6 +2495,17 @@ void wxAuiManager::GetDockSizeConstraint(double* width_pct, double* height_pct)
+ 
+ void wxAuiManager::Update()
+ {
++    wxTopLevelWindow * const
++        tlw = wxDynamicCast(wxGetTopLevelParent(m_frame), wxTopLevelWindow);
++    if ( tlw && tlw->IsIconized() )
++    {
++        // We can't compute the layout correctly when the frame is minimized
++        // because at least under MSW its client size is (0,0) in this case
++        // but, luckily, we don't need to do it right now anyhow.
++        m_updateOnRestore = true;
++        return;
++    }
++
+     m_hoverButton = NULL;
+     m_actionPart = NULL;
+ 
+@@ -3982,8 +3993,19 @@ void wxAuiManager::OnSize(wxSizeEvent& event)
+ {
+     if (m_frame)
+     {
+-        DoFrameLayout();
+-        Repaint();
++        if ( m_updateOnRestore )
++        {
++            // If we had postponed updating, do it now: we only receive size
++            // events once the window is restored.
++            m_updateOnRestore = false;
++
++            Update();
++        }
++        else // Otherwise just re-layout, without redoing the full update.
++        {
++            DoFrameLayout();
++            Repaint();
++        }
+ 
+ #if wxUSE_MDI
+         if (wxDynamicCast(m_frame, wxMDIParentFrame))
+-- 
+2.42.0.windows.2
+

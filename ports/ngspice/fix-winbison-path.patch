@@ -1,0 +1,104 @@
+From 00696471eeb58aa4e6f5672ec9dac501aefd7bcb Mon Sep 17 00:00:00 2001
+From: Marek Roszko <mark.roszko@gmail.com>
+Date: Fri, 3 Feb 2023 22:45:55 -0500
+Subject: [PATCH 1/6] fix winbison path
+
+fix bison
+---
+ visualc/sharedspice.vcxproj      | 4 ++--
+ visualc/vngspice-fftw.vcxproj    | 4 ++--
+ visualc/vngspice.vcxproj         | 4 ++--
+ visualc/xspice/cmpp/cmpp.vcxproj | 8 ++++----
+ 4 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/visualc/sharedspice.vcxproj b/visualc/sharedspice.vcxproj
+index cf35c3d7a..fab606e15 100644
+--- a/visualc/sharedspice.vcxproj
++++ b/visualc/sharedspice.vcxproj
+@@ -2399,12 +2399,12 @@
+   <ItemGroup>
+     <CustomBuild Include="..\src\frontend\parse-bison.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <CustomBuild Include="..\src\spicelib\parser\inpptree-parser.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+   </ItemGroup>
+diff --git a/visualc/vngspice-fftw.vcxproj b/visualc/vngspice-fftw.vcxproj
+index 04a189e00..60a629363 100644
+--- a/visualc/vngspice-fftw.vcxproj
++++ b/visualc/vngspice-fftw.vcxproj
+@@ -2869,12 +2869,12 @@ lib /machine:x64 /def:..\..\fftw-3.3-dll64\libfftw3-3.def /out:$(IntDir)libfftw3
+   <ItemGroup>
+     <CustomBuild Include="..\src\frontend\parse-bison.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <CustomBuild Include="..\src\spicelib\parser\inpptree-parser.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+   </ItemGroup>
+diff --git a/visualc/vngspice.vcxproj b/visualc/vngspice.vcxproj
+index 476250aa7..e5e89a364 100644
+--- a/visualc/vngspice.vcxproj
++++ b/visualc/vngspice.vcxproj
+@@ -2884,12 +2884,12 @@
+   <ItemGroup>
+     <CustomBuild Include="..\src\frontend\parse-bison.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <CustomBuild Include="..\src\spicelib\parser\inpptree-parser.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+   </ItemGroup>
+diff --git a/visualc/xspice/cmpp/cmpp.vcxproj b/visualc/xspice/cmpp/cmpp.vcxproj
+index 5f42909b3..952621f56 100644
+--- a/visualc/xspice/cmpp/cmpp.vcxproj
++++ b/visualc/xspice/cmpp/cmpp.vcxproj
+@@ -157,22 +157,22 @@
+   <ItemGroup>
+     <CustomBuild Include="..\..\..\src\xspice\cmpp\ifs_lex.l">
+       <Message>invoke win_flex.exe for %(Identity)</Message>
+-      <Command>..\..\..\..\flex-bison\win_flex.exe --outfile=.\tmp-bison\%(Filename).c --header-file=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_flex.exe --outfile=.\tmp-bison\%(Filename).c --header-file=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <CustomBuild Include="..\..\..\src\xspice\cmpp\ifs_yacc.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <CustomBuild Include="..\..\..\src\xspice\cmpp\mod_lex.l">
+       <Message>invoke win_flex.exe for %(Identity)</Message>
+-      <Command>..\..\..\..\flex-bison\win_flex.exe --outfile=.\tmp-bison\%(Filename).c --header-file=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_flex.exe --outfile=.\tmp-bison\%(Filename).c --header-file=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <CustomBuild Include="..\..\..\src\xspice\cmpp\mod_yacc.y">
+       <Message>invoke win_bison.exe for %(Identity)</Message>
+-      <Command>..\..\..\..\flex-bison\win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
++      <Command>win_bison.exe --output=.\tmp-bison\%(Filename).c --defines=.\tmp-bison\%(Filename).h %(Identity) || exit 1</Command>
+       <Outputs>.\tmp-bison\%(Filename).c;.\tmp-bison\%(Filename).h</Outputs>
+     </CustomBuild>
+     <None Include="..\src\xspice\icm\objects.inc" />
+-- 
+2.42.0.windows.2
+
