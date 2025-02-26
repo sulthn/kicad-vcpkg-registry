@@ -8,6 +8,7 @@ vcpkg_from_github(
         install-layout.patch
         relocatable-wx-config.patch
         nanosvg-ext-depend.patch
+        nanosvg.patch
         fix-libs-export.patch
         fix-pcre2.patch
         gtk3-link-libraries.patch
