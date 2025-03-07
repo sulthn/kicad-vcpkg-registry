@@ -12,7 +12,6 @@ vcpkg_from_github(
         fix-libs-export.patch
         fix-pcre2.patch
         gtk3-link-libraries.patch
-        secret-ime-fix.patch
 )
 
 vcpkg_from_github(
