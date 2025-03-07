@@ -8,6 +8,7 @@ vcpkg_from_github(
         install-layout.patch
         relocatable-wx-config.patch
         nanosvg-ext-depend.patch
+        nanosvg.patch
         fix-libs-export.patch
         fix-pcre2.patch
         gtk3-link-libraries.patch
@@ -85,7 +86,6 @@ vcpkg_cmake_configure(
         -DwxUSE_LIBPNG=sys
         -DwxUSE_LIBTIFF=sys
         -DwxUSE_NANOSVG=sys
-        -DwxUSE_NANOSVG_EXTERNAL=1
         -DwxUSE_GLCANVAS=ON
         -DwxUSE_LIBGNOMEVFS=OFF
         -DwxUSE_LIBNOTIFY=OFF
