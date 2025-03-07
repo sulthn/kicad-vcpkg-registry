@@ -41,6 +41,20 @@ file(REMOVE_RECURSE "${SOURCE_PATH}/src/stc/lexilla")
 # Copy the submodules to the right place
 file(COPY "${SCINTILLA_SOURCE_PATH}/" DESTINATION "${SOURCE_PATH}/src/stc/lexilla")
 
+vcpkg_from_github(
+    OUT_SOURCE_PATH NANOSVG_SOURCE_PATH
+    REPO memononen/nanosvg
+    REF ea6a6aca009422bba0dbad4c80df6e6ba0c82183 # submodule commit as of d80887f3
+    SHA512 e34196b93155d761a7060b5cc05da5fed0fad812916a28c923d190b011516bb9227641f0994eb705846fcab1d3d503a827336fa7ad9ac99a972e696d90830d8b
+    HEAD_REF master
+)
+
+# Remove exisiting folder in case it was not cleaned
+file(REMOVE_RECURSE "${SOURCE_PATH}/3rdparty/nanosvg")
+# Copy the submodules to the right place
+file(COPY "${NANOSVG_SOURCE_PATH}/" DESTINATION "${SOURCE_PATH}/3rdparty/nanosvg")
+
+
 vcpkg_check_features(
     OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     FEATURES
