@@ -1,3 +1,28 @@
+diff -Naru ./cbdcdf8773-24b9b729f2.clean/include/wx/setup_inc.h ./cbdcdf8773-24b9b729f2.clean.1/include/wx/setup_inc.h
+--- a/include/wx/setup_inc.h	2023-07-10 21:37:34.000000000 +0700
++++ b/include/wx/setup_inc.h	2025-03-07 22:58:34.496350800 +0700
+@@ -1488,7 +1488,7 @@
+ #define wxUSE_NANOSVG       1
+ 
+ // Set to 1 to use external nanosvg library when wxUSE_NANOSVG is enabled
+-#define wxUSE_NANOSVG_EXTERNAL 0
++#define wxUSE_NANOSVG_EXTERNAL 1
+ 
+ // Set to 1 for TGA format support (loading only)
+ #define wxUSE_TGA           1
+diff -Naru ./cbdcdf8773-24b9b729f2.clean/include/wx/univ/setup.h ./cbdcdf8773-24b9b729f2.clean.1/include/wx/univ/setup.h
+--- a/include/wx/univ/setup.h	2023-07-10 21:37:34.000000000 +0700
++++ b/include/wx/univ/setup.h	2025-03-07 22:58:53.378132000 +0700
+@@ -1491,7 +1491,7 @@
+ #define wxUSE_NANOSVG       1
+ 
+ // Set to 1 to use external nanosvg library when wxUSE_NANOSVG is enabled
+-#define wxUSE_NANOSVG_EXTERNAL 0
++#define wxUSE_NANOSVG_EXTERNAL 1
+ 
+ // Set to 1 for TGA format support (loading only)
+ #define wxUSE_TGA           1
+diff -Naru ./cbdcdf8773-24b9b729f2.clean/include/wx/msw/setup.h ./cbdcdf8773-24b9b729f2.clean.1/include/wx/msw/setup.h
 --- a/include/wx/msw/setup.h	2023-07-10 21:37:34.000000000 +0700
 +++ b/include/wx/msw/setup.h	2025-03-07 22:40:18.708412800 +0700
 @@ -1492,7 +1492,7 @@
@@ -9,3 +34,4 @@
  
  // Set to 1 for TGA format support (loading only)
  #define wxUSE_TGA           1
+
