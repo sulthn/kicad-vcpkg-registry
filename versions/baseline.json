@@ -9,6 +9,6 @@
     "python3": { "baseline": "3.11.5", "port-version": 0 },
     "wxpython": { "baseline": "4.2.2", "port-version": 2 },
     "wxwidgets": { "baseline": "3.2.6", "port-version": 2 },
-    "wxwidgets-dev": { "baseline": "3.3.0", "port-version": 5 }
+    "wxwidgets-dev": { "baseline": "3.3.0", "port-version": 6 }
   }
 }

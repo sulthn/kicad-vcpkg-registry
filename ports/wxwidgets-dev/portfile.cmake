@@ -1,8 +1,8 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO wxWidgets/wxWidgets
-    REF 44b99195bc4395944bab8071c6d7adcbdcdf8773
-    SHA512 6812412158b4ca80a15a7d909386064bd4991493a35d7b4e4a66482798358215d06fcb14735192f3f65f966334728066d3ce2d3e3b062f3477749242d8a04c3f 
+    REF 1d0ddc90eced65e98ca9fc5f9e4f4b6b446d54bb
+    SHA512 025d21932c850c72da20408c05af60e434a98880a25571924ff02487baa5fff4857dfee66b3ed78527cef4948a9c904b34d440e406c212a17865317 
     HEAD_REF master
     PATCHES
         install-layout.patch
@@ -18,9 +18,9 @@ vcpkg_from_github(
 vcpkg_from_github(
     OUT_SOURCE_PATH SCINTILLA_SOURCE_PATH
     REPO wxwidgets/scintilla
-    REF b662e55b3d8143bdad94e9a373679c0bfa3f834d # submodule commit as of d80887f3
-    SHA512 a520be3d0269e0e4be9f29ffca5c97f3cf658a800fa8fbc9ade41797b32a69428e95b3efa6f49e590074a0c0fcf37457ddb59dbca5e19c45a3af88c31745f876
-    HEAD_REF master
+    REF 0b90f31ced23241054e8088abb50babe9a44ae67
+    SHA512 db1f3007f4bd8860fad0817b6cf87980a4b713777025128cf5caea8d6d17b6fafe23fd22ff6886d7d5a420f241d85b7502b85d7e52b4ddb0774edc4b0a0203e7
+    HEAD_REF wx
 )
 
 # Remove exisiting folder in case it was not cleaned
@@ -31,9 +31,9 @@ file(COPY "${SCINTILLA_SOURCE_PATH}/" DESTINATION "${SOURCE_PATH}/src/stc/scinti
 vcpkg_from_github(
     OUT_SOURCE_PATH SCINTILLA_SOURCE_PATH
     REPO wxwidgets/lexilla
-    REF 7cab74cefa54851e99b8c06bd6e2cd659b4958ae # submodule commit as of d80887f3
-    SHA512 7566af842a07e261806ab670fafcf94b0a68dd42e12316d46f5ba6ded1e531f3f80235c9bd6c1a1856f2fe61095f7c28e9ecc4f759215bceb2ad72f75dc7a1db
-    HEAD_REF master
+    REF 545d80ef30742956d96f21ed522c04d0ae524da9
+    SHA512 bfd665b591aba36968afafa49752600d2e0c53a53c46915a0b2d5ddd7b2f41c8df26409fa637c0812f9a905636cb4408d7c7a4f3fd3d04319a4d65a8963cf334
+    HEAD_REF wx
 )
 
 # Remove exisiting folder in case it was not cleaned
