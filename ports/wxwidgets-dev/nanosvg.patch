@@ -1,0 +1,11 @@
+--- ./cbdcdf8773-4b0ac92e4f.clean/include/wx/msw/setup.h	2023-07-10 21:37:34.000000000 +0700
++++ ./cbdcdf8773-4b0ac92e4f.clean.1/include/wx/msw/setup.h	2025-03-07 22:40:18.708412800 +0700
+@@ -1492,7 +1492,7 @@
+ #define wxUSE_NANOSVG       1
+ 
+ // Set to 1 to use external nanosvg library when wxUSE_NANOSVG is enabled
+-#define wxUSE_NANOSVG_EXTERNAL 0
++#define wxUSE_NANOSVG_EXTERNAL 1
+ 
+ // Set to 1 for TGA format support (loading only)
+ #define wxUSE_TGA           1
