@@ -12,3 +12,15 @@ diff -Naru a/etg/_xml.py b/etg/_xml.py
  
      c.find('AppendToProlog.node').transfer = True
      c.find('DetachDocumentNode').transferBack = True
+diff -Naru a/etg/translation.py b/etg/translation.py
+--- a/etg/translation.py	2025-03-08 11:06:17.112319000 +0700
++++ b/etg/translation.py	2025-03-08 11:25:38.329411400 +0700
+@@ -38,7 +38,7 @@
+     assert isinstance(c, etgtools.ClassDef)
+     c.find('Set.t').transfer = True
+     c.find('SetLoader.loader').transfer = True
+-    c.find('AddCatalog').findOverload('msgIdCharset').ignore()
++    #c.find('AddCatalog').findOverload('msgIdCharset').ignore()
+ 
+ 
+     c = module.find('wxTranslationsLoader')
