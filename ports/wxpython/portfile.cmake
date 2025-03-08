@@ -5,6 +5,7 @@ vcpkg_from_github(
     SHA512 2e53c5423af05ecb9b4412cdaedb0fd91a3e712a996b93355e649f312f52d1623be539e419561a0dfb9bdabfd5d07e828f0ffafdbb58587e266943ef1007e168
     PATCHES
       ignore-stackwalker-GetAssertStackTrace.patch
+      compatibility.patch
 )
 
 # We need a copy of the wxWidgets source code to build doxygen xml, the doxygen xml is used to generate the C++ code

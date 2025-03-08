@@ -1,7 +1,7 @@
 {
   "name": "wxpython",
   "version-string": "4.2.3",
-  "port-version": 0,
+  "port-version": 1,
   "description": "Python library that allows creating wxWidget interfaces from python",
   "homepage": "https://github.com/wxWidgets/phoenix",
   "supports": "windows & !static & !uwp",

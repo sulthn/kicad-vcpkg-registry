@@ -1,0 +1,14 @@
+diff -Naru a/etg/_xml.py b/etg/_xml.py
+--- a/etg/_xml.py	2025-03-08 11:06:15.886491700 +0700
++++ b/etg/_xml.py	2025-03-08 11:09:31.496601500 +0700
+@@ -89,8 +89,8 @@
+ 
+     c = module.find('wxXmlDocument')
+     c.piBases = ['wx.Object']
+-    c.find('GetEncoding').ignore()
+-    c.find('SetEncoding').ignore()
++    #c.find('GetEncoding').ignore()
++    #c.find('SetEncoding').ignore()
+ 
+     c.find('AppendToProlog.node').transfer = True
+     c.find('DetachDocumentNode').transferBack = True
