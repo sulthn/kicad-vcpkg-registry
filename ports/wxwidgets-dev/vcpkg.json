@@ -56,6 +56,16 @@
         }
       ]
     },
+    "media": {
+      "description": "Build wxMediaCtrl support",
+      "dependencies": [
+        {
+          "name": "gstreamer",
+          "default-features": false,
+          "platform": "!windows & !osx & !ios"
+        }
+      ]
+    },
     "sound": {
       "description": "Build wxSound support",
       "dependencies": [
